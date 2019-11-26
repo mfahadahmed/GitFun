@@ -39,3 +39,6 @@ msbuild.wrn
 #MongoDb
 GitFunDb/
 /.vscode/
+
+#Angular
+node_modules/

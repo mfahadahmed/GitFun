@@ -1,0 +1,9 @@
+<div *ngFor="let user of users">
+    <strong>User {{user.name}}: </strong> {{user.id}}, {{user.username}} <br>
+    <div *ngIf="user.repositories">
+        <strong>Repositories:</strong> <br />
+        <div *ngFor="let repo of user.repositories">
+            <strong>Repo {{repo.name}}:</strong> {{repo.url}}, {{repo.isPublic}}
+        </div>
+    </div>
+</div>

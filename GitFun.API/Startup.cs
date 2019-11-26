@@ -23,13 +23,6 @@ namespace GitFun.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson();
-            services.AddControllers()
-            .AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-            });
-
             services.Configure<GitFunDatabaseSettings>(Configuration.GetSection(
                 nameof(GitFunDatabaseSettings)));
             services.AddSingleton<IGitFunDatabaseSettings>(
@@ -37,6 +30,8 @@ namespace GitFun.API
 
             services.AddSingleton<UserService>();
             services.AddControllers();
+            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +47,8 @@ namespace GitFun.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
