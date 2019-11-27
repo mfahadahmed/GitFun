@@ -1,6 +1,6 @@
 //using GitFun.API.Models;
 using GitFun.API.Models;
-using GitFun.API.Services;
+using GitFun.API.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -28,10 +28,11 @@ namespace GitFun.API
             services.AddSingleton<IGitFunDatabaseSettings>(
                 sp => sp.GetRequiredService<IOptions<GitFunDatabaseSettings>>().Value);
 
-            services.AddSingleton<UserService>();
-            services.AddControllers();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
             
             services.AddCors();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

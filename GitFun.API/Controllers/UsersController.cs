@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GitFun.API.Models;
-using GitFun.API.Services;
+using GitFun.API.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitFun.API.Controllers
@@ -10,21 +10,21 @@ namespace GitFun.API.Controllers
     [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly IUserRepository _userService;
 
-        public UsersController(UserService userService) => _userService = userService;
+        public UsersController(IUserRepository userService) => _userService = userService;
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var usersList = await _userService.Get();
+            var usersList = await _userService.GetList();
             return Ok(usersList);
         }
 
         [HttpGet("{id}", Name="GetUser")]
         public async Task<IActionResult> Get(string id)
         {
-            var user = await _userService.Get(id);
+            var user = await _userService.GetById(id);
             if (user == null)
             {
                 return NotFound();
@@ -36,34 +36,34 @@ namespace GitFun.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(User user)
         {
-            var createdUser = await _userService.Create(user);
-            return CreatedAtRoute("GetUser", new { Id = createdUser.Id }, createdUser);
+            await _userService.Create(user);
+            return CreatedAtRoute("GetUser", new { Id = user.Id }, user);
         }
 
         [HttpPut("{Id}")]
         public async Task<IActionResult> Update(string id, User user)
         {
-            var recordFound = await _userService.Get(id);
-            if (recordFound == null)
+            var existingUser = await _userService.GetById(id);
+            if (existingUser == null)
             {
                 return NotFound();
             }
 
-            var updated = await _userService.Update(id, user);
-            return Ok(updated);
+            await _userService.Update(id, user);
+            return NoContent();
         }
         
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
-            var recordFound = await _userService.Get(id);
-            if (recordFound == null)
+            var existingUser = await _userService.GetById(id);
+            if (existingUser == null)
             {
                 return NotFound();
             }
 
-            var deleted = await _userService.Remove(id);
-            return Ok(deleted);
+            await _userService.Remove(id);
+            return NoContent();
         }
 
     }

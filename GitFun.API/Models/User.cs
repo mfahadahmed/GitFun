@@ -17,8 +17,15 @@ namespace GitFun.API.Models
         [BsonElement("username")]
         public string Username { get; set; }
 
+        [BsonElement("passwordHash")]
+        public byte[] PasswordHash { get; set; }
+
+        [BsonElement("passwordSalt")]
+        public byte[] PasswordSalt { get; set; }
+
         [BsonElement("repositories")]
         public IEnumerable<Repository> Repositories { get; set; }
+        
         //public User[] Followers { get; set; }
     }
 
