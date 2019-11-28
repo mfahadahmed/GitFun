@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GitFun.API.Models;
@@ -29,7 +30,16 @@ namespace GitFun.API.Repositories
             return await user.FirstOrDefaultAsync();
         }
 
-        public async Task Create(User user) => await _users.InsertOneAsync(user);
+        public async Task Create(User user)
+        {
+            if (user.Projects?.Count > 0)
+            {
+                foreach (var project in user.Projects)
+                    project.LastUpdated = DateTime.Now;
+            }
+
+            await _users.InsertOneAsync(user);
+        }
 
         public async Task Update(string id, User user) => await _users.ReplaceOneAsync(us => us.Id == id, user);
 

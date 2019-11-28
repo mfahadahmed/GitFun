@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -23,19 +24,23 @@ namespace GitFun.API.Models
         [BsonElement("passwordSalt")]
         public byte[] PasswordSalt { get; set; }
 
+        [BsonElement("projects")]
+        public List<Project> Projects { get; set; }
+
         [BsonElement("repositories")]
-        public IEnumerable<Repository> Repositories { get; set; }
-        
-        //public User[] Followers { get; set; }
+        public List<string> Repositories { get; set; }
     }
 
-    public class Repository
+    public class Project
     {
         [BsonElement("name")]
         public string Name { get; set; }
 
-        [BsonElement("isPublic")]
-        public bool IsPublic { get; set; }
+        [BsonElement("description")]
+        public string Description { get; set; }
+
+        [BsonElement("lastUpdated")]
+        public DateTime LastUpdated { get; set; }
 
         [BsonElement("url")]
         public string Url { get; set; }

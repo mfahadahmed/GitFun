@@ -3,6 +3,7 @@ namespace GitFun.API.Models
     public interface IGitFunDatabaseSettings
     {
         public string UsersCollectionName { get; set; }
+        public string RepositoriesCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -10,6 +11,7 @@ namespace GitFun.API.Models
     public class GitFunDatabaseSettings : IGitFunDatabaseSettings
     {
         public string UsersCollectionName { get; set; }
+        public string RepositoriesCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }

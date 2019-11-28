@@ -28,8 +28,9 @@ namespace GitFun.API
             services.AddSingleton<IGitFunDatabaseSettings>(
                 sp => sp.GetRequiredService<IOptions<GitFunDatabaseSettings>>().Value);
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IRepoRepository, RepoRepository>();
+            services.AddSingleton<IAuthRepository, AuthRepository>();
             
             services.AddCors();
             services.AddControllers();

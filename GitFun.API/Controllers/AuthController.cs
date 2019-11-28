@@ -33,24 +33,24 @@ namespace GitFun.API.Controllers
             return StatusCode(201);
         }
 
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(UserLoginDTO dto)
-        {
-            var user = await _authRepository.GetUser(dto.Username);
-            if (user == null)
-                return Unauthorized();
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login(UserLoginDTO dto)
+        //{
+        //    var user = await _authRepository.GetUser(dto.Username);
+        //    if (user == null)
+        //        return Unauthorized();
 
-            if (!_authRepository.Login(user, dto.Password))
-                return Unauthorized();
+        //    if (!_authRepository.Login(user, dto.Password))
+        //        return Unauthorized();
 
-            var claims = new []
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.Id),
-                new Claim(ClaimTypes.Name, user.Name)
-            };
+        //    var claims = new []
+        //    {
+        //        new Claim(ClaimTypes.NameIdentifier, user.Id),
+        //        new Claim(ClaimTypes.Name, user.Name)
+        //    };
 
-            var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey()
+        //    var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey()
 
-        }
+        //}
     }
 }
