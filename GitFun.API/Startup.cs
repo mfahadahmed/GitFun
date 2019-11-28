@@ -1,8 +1,11 @@
 //using GitFun.API.Models;
 using GitFun.API.Models;
+using GitFun.API.Models.SQLiteModels;
 using GitFun.API.Repositories;
+using GitFun.API.Repositories.SQLiteRepositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,7 +34,10 @@ namespace GitFun.API
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IRepoRepository, RepoRepository>();
             services.AddSingleton<IAuthRepository, AuthRepository>();
-            
+
+            services.AddDbContext<SQLiteDatabaseContext>(options => options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddTransient<ISQLiteUsersRepository, SQLiteUsersRepository>();
+
             services.AddCors();
             services.AddControllers();
         }
