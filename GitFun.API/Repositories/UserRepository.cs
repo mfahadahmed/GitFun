@@ -30,6 +30,12 @@ namespace GitFun.API.Repositories
             return await user.FirstOrDefaultAsync();
         }
 
+        public async Task<User> GetByUsername(string username)
+        {
+            var user = await _users.FindAsync(user => user.Username == username);
+            return await user.FirstOrDefaultAsync();
+        }
+
         public async Task Create(User user)
         {
             if (user.Projects?.Count > 0)

@@ -25,6 +25,14 @@ namespace GitFun.API.Repositories
             return await repositories.ToListAsync();
         }
 
+        public async Task<List<Repository>> GetList(List<string> ids)
+        {
+            var filter = Builders<Repository>.Filter.In(repo => repo.Id, ids);
+            var repos = await _repositories.FindAsync(filter);
+
+            return await repos.ToListAsync();
+        }
+
         public async Task<Repository> GetById(string id)
         {
             var repository = await _repositories.FindAsync(repository => repository.Id == id);

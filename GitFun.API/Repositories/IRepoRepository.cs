@@ -8,10 +8,11 @@ namespace GitFun.API.Repositories
 {
     public interface IRepoRepository
     {
-        public Task<List<Repository>> GetList();
-        public Task<Repository> GetById(string id);
-        public Task Create(Repository repository);
-        public Task Update(string id, Repository repository);
-        public Task Remove(string id);
+        Task<List<Repository>> GetList();
+        Task<List<Repository>> GetList(List<string> ids);
+        Task<Repository> GetById(string id);
+        Task Create(Repository repository);
+        Task Update(string id, Repository repository);
+        Task Remove(string id);
     }
 }

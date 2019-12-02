@@ -1,6 +1,8 @@
 //using GitFun.API.Models;
+using AutoMapper;
 using GitFun.API.Models;
 using GitFun.API.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +23,6 @@ namespace GitFun.API
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<GitFunDatabaseSettings>(Configuration.GetSection(
@@ -32,6 +33,9 @@ namespace GitFun.API
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IRepoRepository, RepoRepository>();
             services.AddSingleton<IAuthRepository, AuthRepository>();
+
+            services.AddMediatR(typeof(Startup));
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddCors();
             services.AddControllers();
