@@ -12,26 +12,6 @@ using System.Threading.Tasks;
 
 namespace GitFun.API.Requests.Handlers
 {
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
-    {
-        private readonly IUserRepository _userRepository;
-
-        public CreateUserCommandHandler(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
-        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
-        {
-            var existingUser = await _userRepository.GetByUsername(request.User.Username);
-            if (existingUser != null)
-                throw new Exception("User alreay exists. Creation failed.");
-
-            await _userRepository.Create(request.User);
-            return request.User.Id;
-        }
-    }
-
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     {
         private readonly IUserRepository _userRepository;
@@ -115,8 +95,10 @@ namespace GitFun.API.Requests.Handlers
                 throw new Exception("User not found. Failed to get details.");
 
             var userDetailsDTO = _mapper.Map<User, UserDetailsDTO>(user);
+            
+            if (user.Repositories != null)
+                userDetailsDTO.Repositories = await _repoRepository.GetList(user.Repositories);
 
-            userDetailsDTO.Repositories = await _repoRepository.GetList(user.Repositories);
             return userDetailsDTO;
         }
     }

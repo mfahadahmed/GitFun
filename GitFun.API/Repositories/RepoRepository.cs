@@ -26,6 +26,9 @@ namespace GitFun.API.Repositories
 
         public async Task<List<Repository>> GetList(List<string> repoIds)
         {
+            if (repoIds == null)
+                return null;
+
             var filter = Builders<Repository>.Filter.In(repo => repo.Id, repoIds);
             var repos = await _repositories.FindAsync(filter);
 

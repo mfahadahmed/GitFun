@@ -29,12 +29,13 @@ namespace GitFun.API.Repositories
             return user;
         }
 
-        public bool Login(User user, string password)
+        public async Task<User> Login(string username, string password)
         {
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                return false;
+            var user = await GetUser(username);
+            if (user == null || !VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+                return null;
 
-            return true;
+            return user;
         }
 
         public async Task<bool> UserExists(string username)

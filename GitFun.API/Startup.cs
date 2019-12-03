@@ -3,14 +3,15 @@ using AutoMapper;
 using GitFun.API.Models;
 using GitFun.API.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace GitFun.API
 {
@@ -29,6 +30,18 @@ namespace GitFun.API
                 nameof(GitFunDatabaseSettings)));
             services.AddSingleton<IGitFunDatabaseSettings>(
                 sp => sp.GetRequiredService<IOptions<GitFunDatabaseSettings>>().Value);
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options => {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(
+                            Configuration.GetSection("AppSettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
 
             services.AddSingleton<IUserRepository, UserRepository>();
             services.AddSingleton<IRepoRepository, RepoRepository>();
@@ -53,6 +66,7 @@ namespace GitFun.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

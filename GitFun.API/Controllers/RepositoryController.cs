@@ -5,10 +5,12 @@ using GitFun.API.Repositories;
 using GitFun.API.Requests.Commands;
 using GitFun.API.Requests.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitFun.API.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class RepositoryController : ControllerBase
@@ -50,6 +52,7 @@ namespace GitFun.API.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Create(Repository repository)
         {

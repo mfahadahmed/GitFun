@@ -1,8 +1,9 @@
-using System.Security.Claims;
+using System;
 using System.Threading.Tasks;
 using GitFun.API.DTOs;
-using GitFun.API.Models;
 using GitFun.API.Repositories;
+using GitFun.API.Requests.Commands;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -14,43 +15,42 @@ namespace GitFun.API.Controllers
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
+        private readonly IMediator _mediator;
 
-        public AuthController(IAuthRepository authRepository, IConfiguration config)
+        public AuthController(IAuthRepository authRepository, IConfiguration config, IMediator mediator)
         {
             _authRepository = authRepository;
             _config = config;
+            _mediator = mediator;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register(UserRegisterDTO dto)
+        public async Task<IActionResult> Register(UserRegisterDTO request)
         {
-            if (await _authRepository.UserExists(dto.Username))
-                return BadRequest("User already exists");
-
-            var user = new User { Username = dto.Username };
-            var createdUser = await _authRepository.Register(user, dto.Password);
+            try
+            {
+                await _mediator.Send(new RegisterUserCommand { UserRegisterDTO = request });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
             return StatusCode(201);
         }
 
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(UserLoginDTO dto)
-        //{
-        //    var user = await _authRepository.GetUser(dto.Username);
-        //    if (user == null)
-        //        return Unauthorized();
-
-        //    if (!_authRepository.Login(user, dto.Password))
-        //        return Unauthorized();
-
-        //    var claims = new []
-        //    {
-        //        new Claim(ClaimTypes.NameIdentifier, user.Id),
-        //        new Claim(ClaimTypes.Name, user.Name)
-        //    };
-
-        //    var key = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey()
-
-        //}
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(UserLoginDTO request)
+        {
+            try
+            {
+                var userToken = await _mediator.Send(new LoginUserCommand { UserLoginDTO = request });
+                return Ok(new { token = userToken });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

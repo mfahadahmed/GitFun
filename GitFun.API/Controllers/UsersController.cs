@@ -18,16 +18,16 @@ namespace GitFun.API.Controllers
         public UsersController(IMediator mediator) => _mediator = mediator;
 
         [HttpGet]
-        public async Task<IActionResult> Get(GetUsersQuery query)
+        public async Task<IActionResult> Get()
         {
-            var usersList = await _mediator.Send(query);
+            var usersList = await _mediator.Send(new GetUsersQuery());
             return Ok(usersList);
         }
 
         [HttpGet("{id}", Name="GetUser")]
-        public async Task<IActionResult> Get(GetUserDetailsQuery query)
+        public async Task<IActionResult> Get(string id)
         {
-            var userDetails = await _mediator.Send(query);
+            var userDetails = await _mediator.Send(new GetUserDetailsQuery { UserId = id });
             return Ok(userDetails);
         }
 
