@@ -88,6 +88,9 @@ namespace GitFun.API.Requests.Handlers
         public async Task<List<UserListDTO>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
             var usersList = await _userRepository.GetList();
+            if (usersList == null)
+                throw new Exception("No user found. Failed to get list.");
+
             var userDTOList = _mapper.Map<List<User>, List<UserListDTO>>(usersList);
             return userDTOList;
         }
@@ -108,6 +111,9 @@ namespace GitFun.API.Requests.Handlers
         public async Task<UserDetailsDTO> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetById(request.UserId);
+            if (user == null)
+                throw new Exception("User not found. Failed to get details.");
+
             var userDetailsDTO = _mapper.Map<User, UserDetailsDTO>(user);
 
             userDetailsDTO.Repositories = await _repoRepository.GetList(user.Repositories);

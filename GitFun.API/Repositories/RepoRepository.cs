@@ -2,7 +2,6 @@
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GitFun.API.Repositories
@@ -22,15 +21,15 @@ namespace GitFun.API.Repositories
         public async Task<List<Repository>> GetList()
         {
             var repositories = await _repositories.FindAsync(repository => true);
-            return await repositories.ToListAsync();
+            return await repositories?.ToListAsync();
         }
 
-        public async Task<List<Repository>> GetList(List<string> ids)
+        public async Task<List<Repository>> GetList(List<string> repoIds)
         {
-            var filter = Builders<Repository>.Filter.In(repo => repo.Id, ids);
+            var filter = Builders<Repository>.Filter.In(repo => repo.Id, repoIds);
             var repos = await _repositories.FindAsync(filter);
 
-            return await repos.ToListAsync();
+            return await repos?.ToListAsync();
         }
 
         public async Task<Repository> GetById(string id)

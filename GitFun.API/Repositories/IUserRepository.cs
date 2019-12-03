@@ -6,11 +6,12 @@ namespace GitFun.API.Repositories
 {
     public interface IUserRepository
     {
-        public Task<List<User>> GetList();
-        public Task<User> GetById(string id);
-        public Task<User> GetByUsername(string username);
-        public Task Create(User user);
-        public Task Update(string id, User user);
-        public Task Remove(string id);
+        Task<List<User>> GetList();
+        Task<User> GetById(string id);
+        Task<User> GetByUsername(string username);
+        Task<string> GetRepoOwner(string repoId);
+        Task Create(User user);
+        Task Update(string id, User user);
+        Task Remove(string id);
     }
 }

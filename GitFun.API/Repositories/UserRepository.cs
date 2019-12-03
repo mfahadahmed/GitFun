@@ -36,6 +36,13 @@ namespace GitFun.API.Repositories
             return await user.FirstOrDefaultAsync();
         }
 
+        public async Task<string> GetRepoOwner(string repoId)
+        {
+            var user = await _users.FindAsync(user => user.Repositories.Contains(repoId));
+            var detials = await user.FirstOrDefaultAsync();
+            return detials?.Username;
+        }
+
         public async Task Create(User user)
         {
             if (user.Projects?.Count > 0)
