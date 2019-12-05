@@ -24,10 +24,10 @@
         <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{authService.getUsername()}}</a>
       
         <div class="dropdown-menu mt-2" *dropdownMenu>
-          <a class="dropdown-item">Profile</a>
-          <a class="dropdown-item">Repositories</a>
-          <a class="dropdown-item">Projects</a>
-          <a class="dropdown-item">Stars</a>
+          <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
+          <a class="dropdown-item" [routerLink]="['/repositories']">Repositories</a>
+          <a class="dropdown-item" [routerLink]="['/projects']">Projects</a>
+          <a class="dropdown-item" [routerLink]="['/stars']">Stars</a>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>
