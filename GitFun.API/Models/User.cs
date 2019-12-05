@@ -18,6 +18,21 @@ namespace GitFun.API.Models
         [BsonElement("username")]
         public string Username { get; set; }
 
+        [BsonElement("emailAddress")]
+        public string EmailAddress { get; set; }
+
+        [BsonElement("phone")]
+        public string Phone { get; set; }
+
+        [BsonElement("company")]
+        public string Company { get; set; }
+
+        [BsonElement("city")]
+        public string City { get; set; }
+
+        [BsonElement("country")]
+        public string Country { get; set; }
+
         [BsonElement("passwordHash")]
         public byte[] PasswordHash { get; set; }
 

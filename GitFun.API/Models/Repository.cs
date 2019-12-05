@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace GitFun.API.Models
 {
@@ -16,11 +17,20 @@ namespace GitFun.API.Models
         [BsonElement("description")]
         public string Description { get; set; }
 
+        [BsonElement("url")]
+        public string Url { get; set; }
+
+        [BsonElement("branches")]
+        public List<string> Branches { get; set; }
+
+        [BsonElement("commits")]
+        public List<string> Commits { get; set; }
+
         [BsonElement("isPublic")]
         public bool IsPublic { get; set; }
 
-        [BsonElement("url")]
-        public string Url { get; set; }
+        [BsonElement("isStarred")]
+        public bool IsStarred { get; set; }
 
         [BsonElement("lastUpdated")]
         public DateTime LastUpdated { get; set; }
