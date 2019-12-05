@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,10 @@ import { ProjectListComponent } from './project-list/project-list.component';
 import { StarListComponent } from './star-list/star-list.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { appRoutes } from './routes';
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 
 @NgModule({
    declarations: [
@@ -45,6 +50,13 @@ import { appRoutes } from './routes';
            horizontal: {
              position: 'middle'
            }
+         }
+      }),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/auth']
          }
       })
    ],
