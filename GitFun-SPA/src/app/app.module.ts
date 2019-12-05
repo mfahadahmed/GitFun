@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BsDropdownModule } from 'ngx-bootstrap';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule } from '@angular/router';
+import { NotifierModule } from 'angular-notifier';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,6 +40,13 @@ import { appRoutes } from './routes';
       FormsModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
+      NotifierModule.withConfig({
+         position: {
+           horizontal: {
+             position: 'middle'
+           }
+         }
+      })
    ],
    providers: [
       AuthService

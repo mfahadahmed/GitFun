@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-register',
@@ -13,16 +14,18 @@ export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private notifier: NotifierService) { }
 
   ngOnInit() {
   }
 
   register() {
-    this.authService.register(this.model).subscribe(
-      next => this.cancelRegister.emit(false),
-      error => console.log('Registration failed'),
-    );
+    this.authService.register(this.model).subscribe(() => {
+      this.notifier.notify('success', 'Registeration Successfull!');
+      this.cancelRegister.emit(false);
+    }, () => {
+      this.notifier.notify('error', 'Registeration Failed!');
+    });
   }
 
   cancel() {
