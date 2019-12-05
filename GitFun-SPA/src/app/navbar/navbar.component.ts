@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -24,5 +24,5 @@ export class NavbarComponent implements OnInit {
 
   logout = () => localStorage.removeItem('token');
 
-  isLoggedIn = () => !!localStorage.getItem('token');
+  isLoggedIn = () => this.authService.isLoggedIn();
 }
