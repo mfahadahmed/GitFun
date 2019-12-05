@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   model: any = {};
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -18,11 +19,15 @@ export class NavbarComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(
       next => console.log('login successful'),
-      error => console.log('login failed')
+      error => console.log('login failed'),
+      () => this.router.navigate(['/profile'])
     );
   }
 
-  logout = () => localStorage.removeItem('token');
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
+  }
 
   isLoggedIn = () => this.authService.isLoggedIn();
 }
