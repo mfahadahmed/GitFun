@@ -1,4 +1,6 @@
-﻿using GitFun.API.Models;
+﻿using AutoMapper;
+using GitFun.API.DTOs;
+using GitFun.API.Models;
 using GitFun.API.Repositories;
 using GitFun.API.Requests.Commands;
 using MediatR;
@@ -18,10 +20,14 @@ namespace GitFun.API.Requests.Handlers
     public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand>
     {
         private readonly IAuthRepository _authRepository;
+        private readonly IMapper _mapper;
 
-        public RegisterUserCommandHandler(IAuthRepository authRepository)
+        private static readonly int[] ImageIdsArray = { 1020, 1024, 1074, 1003, 200 };
+
+        public RegisterUserCommandHandler(IAuthRepository authRepository, IMapper mapper)
         {
             _authRepository = authRepository;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
@@ -30,7 +36,12 @@ namespace GitFun.API.Requests.Handlers
             if (await _authRepository.UserExists(userRegister.Username))
                 throw new Exception("User already exists. Registration failed.");
 
-            var user = new User { Username = userRegister.Username, Name = userRegister.Name ?? userRegister.Username };
+            var user = _mapper.Map<UserRegisterDTO, User>(userRegister);
+
+            var rd = new Random();
+            int randomImageId = ImageIdsArray[rd.Next(0, ImageIdsArray.Length)];
+            user.PhotoUrl = "https://picsum.photos/id/" + randomImageId + "/200/300";
+
             await _authRepository.Register(user, userRegister.Password);
             
             return Unit.Value;

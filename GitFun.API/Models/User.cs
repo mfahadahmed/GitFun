@@ -33,6 +33,9 @@ namespace GitFun.API.Models
         [BsonElement("country")]
         public string Country { get; set; }
 
+        [BsonElement("photoUrl")]
+        public string PhotoUrl { get; set; }
+
         [BsonElement("passwordHash")]
         public byte[] PasswordHash { get; set; }
 

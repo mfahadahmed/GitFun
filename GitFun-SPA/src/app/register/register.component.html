@@ -17,6 +17,31 @@
         placeholder="Full Name" [(ngModel)]="model.name">
     </div>
 
+    <div class="form-group">
+        <input type="text" class="form-control" required name="emailAddress"
+        placeholder="Email Address" [(ngModel)]="model.emailAddress">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" required name="phone"
+        placeholder="Phone" [(ngModel)]="model.phone">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" required name="company"
+        placeholder="Company" [(ngModel)]="model.company">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" required name="city"
+        placeholder="City" [(ngModel)]="model.city">
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" required name="country"
+        placeholder="Country" [(ngModel)]="model.country">
+    </div>
+
     <div class="formgroup text-center">
       <button class="btn btn-primary mr-2" type="submit" [disabled]="!registerForm.valid">Register</button>
       <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace GitFun.API.DTOs
 {
@@ -16,6 +12,16 @@ namespace GitFun.API.DTOs
         public string Password { get; set; }
 
         public string Name { get; set; }
+
+        public string EmailAddress { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Company { get; set; }
+
+        public string City { get; set; }
+
+        public string Country { get; set; }
     }
 
     public class UserLoginDTO
@@ -25,7 +31,6 @@ namespace GitFun.API.DTOs
 
         [Required]
         [StringLength(12, MinimumLength = 4)]
-
         public string Password { get; set; }
     }
 }

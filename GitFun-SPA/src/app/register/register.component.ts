@@ -4,6 +4,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';
+import { User } from '../_models/user';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ import { NotifierService } from 'angular-notifier';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
-  model: any = {};
+  model: User;
 
   constructor(private authService: AuthService, private router: Router, private notifier: NotifierService) { }
 

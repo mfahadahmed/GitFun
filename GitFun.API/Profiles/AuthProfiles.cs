@@ -14,6 +14,7 @@ namespace GitFun.API.Profiles
         {
             CreateMap<User, UserRegisterDTO>();
             CreateMap<User, UserLoginDTO>();
+            CreateMap<UserRegisterDTO, User>();
         }
     }
 }

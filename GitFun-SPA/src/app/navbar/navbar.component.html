@@ -4,7 +4,7 @@
 
     <ul *ngIf="isLoggedIn()" class="navbar-nav mr-auto">
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/profile']">Profile</a>
+        <a class="nav-link" [routerLink]="['/overview']">Overview</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/repositories']">Repostories</a>
@@ -24,7 +24,7 @@
         <a class="dropdown-toggle text-light" dropdownToggle>Welcome {{authService.getUsername()}}</a>
       
         <div class="dropdown-menu mt-2" *dropdownMenu>
-          <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
+          <a class="dropdown-item" [routerLink]="['/overview']">Overview</a>
           <a class="dropdown-item" [routerLink]="['/repositories']">Repositories</a>
           <a class="dropdown-item" [routerLink]="['/projects']">Projects</a>
           <a class="dropdown-item" [routerLink]="['/stars']">Stars</a>

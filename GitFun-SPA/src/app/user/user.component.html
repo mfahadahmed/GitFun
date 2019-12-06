@@ -1,7 +1,0 @@
-<div *ngFor="let user of users">
-    <strong>{{user.name}}: </strong> {{user.id}}, {{user.username}} <br>
-    <div *ngFor="let repo of user.repositories">
-        <strong>{{repo.name}}:</strong> {{repo.url}}, {{repo.isPublic}}
-    </div>
-    <br>
-</div>

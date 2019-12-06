@@ -1,0 +1,10 @@
+<div class="card w-75">
+    <div class="card-body p-1">
+      <a><h4 class="card-title">{{user.username}}</h4></a>
+      <h5 class="card-subtitle">{{user.name}}</h5>
+      <h5 class="card-subtitle">{{user.company}}</h5>
+      <p class="card-text text-center">{{user.emailAddress}}, {{user.phone}}</p>
+      <p class="card-text text-muted">{{user.city}}, {{user.country}}</p>
+      <a class="card-link" [routerLink]="['/users/', user.id]">See Details</a>
+    </div>
+  </div>

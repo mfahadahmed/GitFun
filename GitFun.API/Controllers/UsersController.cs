@@ -5,10 +5,12 @@ using GitFun.API.Repositories;
 using GitFun.API.Requests.Commands;
 using GitFun.API.Requests.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GitFun.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase

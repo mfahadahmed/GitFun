@@ -9,17 +9,18 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { ProfileComponent } from './profile/profile.component';
 import { RepositoryListComponent } from './repository-list/repository-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { StarListComponent } from './star-list/star-list.component';
-import { UserListComponent } from './user-list/user-list.component';
+import { UserListComponent } from './users/user-list/user-list.component';
 import { appRoutes } from './routes';
+import { UserRowComponent } from './users/user-row/user-row.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { OverviewComponent } from './overview/overview.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -28,15 +29,16 @@ export function tokenGetter() {
 @NgModule({
    declarations: [
       AppComponent,
-      UserComponent,
       NavbarComponent,
       HomeComponent,
       RegisterComponent,
-      ProfileComponent,
       RepositoryListComponent,
       ProjectListComponent,
       StarListComponent,
-      UserListComponent
+      UserListComponent,
+      UserRowComponent,
+      UserDetailComponent,
+      OverviewComponent
    ],
    imports: [
       BrowserModule,

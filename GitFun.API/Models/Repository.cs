@@ -34,5 +34,8 @@ namespace GitFun.API.Models
 
         [BsonElement("lastUpdated")]
         public DateTime LastUpdated { get; set; }
+
+        [BsonElement("owner")]
+        public string Owner { get; set; }
     }
 }

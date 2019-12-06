@@ -21,8 +21,8 @@ export class NavbarComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(
       next => this.notifierService.notify('success', 'Login Successfull!'),
-      error => this.notifierService.notify('error', 'Login Failed!'),
-      () => this.router.navigate(['/profile'])
+      (err: any) => this.notifierService.notify('error', err['error']),
+      () => this.router.navigate(['/overview'])
     );
   }
 
