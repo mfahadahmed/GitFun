@@ -13,7 +13,7 @@ import { User } from '../_models/user';
 })
 export class RegisterComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
-  model: User;
+  model: User = {};
 
   constructor(private authService: AuthService, private router: Router, private notifier: NotifierService) { }
 

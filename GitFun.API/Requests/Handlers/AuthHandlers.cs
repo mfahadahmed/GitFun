@@ -40,7 +40,7 @@ namespace GitFun.API.Requests.Handlers
 
             var rd = new Random();
             int randomImageId = ImageIdsArray[rd.Next(0, ImageIdsArray.Length)];
-            user.PhotoUrl = "https://picsum.photos/id/" + randomImageId + "/200/300";
+            user.PhotoUrl = "https://picsum.photos/id/" + randomImageId + "/200/250";
 
             await _authRepository.Register(user, userRegister.Password);
             

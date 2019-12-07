@@ -29,4 +29,6 @@ export class AuthService {
   isLoggedIn = () => !this.jwtHelper.isTokenExpired(localStorage.getItem('token'));
 
   getUsername = () => this.decodedToken.unique_name;
+
+  getUserId = () => this.decodedToken.nameid;
 }

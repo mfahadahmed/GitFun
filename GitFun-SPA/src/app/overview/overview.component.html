@@ -1,10 +1,70 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo velit impedit doloribus maxime commodi necessitatibus culpa illo ipsam, optio quas! Aliquam quisquam vero voluptatem vitae perferendis illo nisi officiis unde?</p>
+  
+  <div class="row mt-4">
+    <div class="col">
+      <h2 class="text-center">User Details</h2>
+      <hr>
     </div>
+  </div>
+
+  <div class="row mt-2">
+
+    <div class="col-md-3">
+      <img src={{user.photoUrl}} class="card-img-top" alt="{{user.username}}">
+    </div>
+
     <div class="col-md-9">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora aspernatur, atque dicta dignissimos ea nobis officia dolores. Eum maxime exercitationem quasi similique! Unde voluptate esse doloremque saepe nisi possimus libero.</p>
+      <div class="container">
+
+        <div class="row row-cols-2 mt-2">
+          <div class="col text-center">
+            <label><strong>Name</strong></label>
+            <br>
+            <label>{{user.name}}</label>
+          </div>
+
+          <div class="col text-center">
+            <label><strong>Username</strong></label>
+            <br>
+            <label>{{user.username}}</label>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 mt-4">
+          <div class="col text-center">
+            <label><strong>Email Address</strong></label>
+            <br>
+            <label>{{user.emailAddress}}</label>
+          </div>
+        
+          <div class="col text-center">
+            <label><strong>Phone</strong></label>
+            <br>
+            <label>{{user.phone}}</label>
+          </div>
+        </div>
+
+        <div class="row row-cols-2 mt-4">
+          <div class="col text-center">
+            <label><strong>City</strong></label>
+            <br>
+            <label>{{user.city}}</label>
+          </div>
+        
+          <div class="col text-center">
+            <label><strong>Country</strong></label>
+            <br>
+            <label>{{user.country}}</label>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col text-center">
+            <button class="btn btn-primary">Edit User</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

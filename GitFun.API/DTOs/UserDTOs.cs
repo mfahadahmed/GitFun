@@ -23,6 +23,7 @@ namespace GitFun.API.DTOs
         public string Company { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        public string PhotoUrl { get; set; }
         public List<Project> Projects { get; set; }
         public List<Repository> Repositories { get; set; }
     }
