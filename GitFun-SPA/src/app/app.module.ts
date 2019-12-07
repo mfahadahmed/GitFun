@@ -19,7 +19,6 @@ import { StarListComponent } from './star-list/star-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { appRoutes } from './routes';
 import { UserRowComponent } from './users/user-row/user-row.component';
-import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { OverviewComponent } from './overview/overview.component';
 
 export function tokenGetter() {
@@ -37,7 +36,6 @@ export function tokenGetter() {
       StarListComponent,
       UserListComponent,
       UserRowComponent,
-      UserDetailComponent,
       OverviewComponent
    ],
    imports: [

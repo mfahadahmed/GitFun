@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
-    this.notifierService.notify('success', 'Logout Successfull!')
   }
 
   isLoggedIn = () => this.authService.isLoggedIn();

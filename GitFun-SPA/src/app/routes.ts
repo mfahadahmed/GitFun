@@ -5,7 +5,6 @@ import { StarListComponent } from './star-list/star-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
-import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { OverviewComponent } from './overview/overview.component';
 
 export const appRoutes: Routes = [
@@ -20,7 +19,6 @@ export const appRoutes: Routes = [
             { path: 'projects', component: ProjectListComponent },
             { path: 'stars', component: StarListComponent },
             { path: 'users', component: UserListComponent },
-            { path: 'users/:id', component: UserDetailComponent },
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'},
