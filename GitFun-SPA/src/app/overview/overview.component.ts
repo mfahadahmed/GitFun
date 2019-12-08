@@ -3,6 +3,7 @@ import { User } from '../_models/user';
 import { UserService } from '../_services/user.service';
 import { AuthService } from '../_services/auth.service';
 import { NotifierService } from 'angular-notifier';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-overview',
@@ -12,7 +13,7 @@ import { NotifierService } from 'angular-notifier';
 export class OverviewComponent implements OnInit {
   user: User = {};
   constructor(private userService: UserService, private authService: AuthService,
-    private notifier: NotifierService) { }
+    private notifier: NotifierService, private router: Router) { }
 
   ngOnInit() {
     this.getUser();
@@ -24,5 +25,4 @@ export class OverviewComponent implements OnInit {
       err => this.notifier.notify('error', err.error) 
     );
   }
-
 }
