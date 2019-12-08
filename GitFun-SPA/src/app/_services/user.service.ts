@@ -8,19 +8,19 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl = environment.webApiUrl;
+  baseUrl = environment.webApiUrl + 'users/';
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + 'users');
+    return this.http.get<User[]>(this.baseUrl);
   }
 
   getUser(id: string): Observable<User> {
-    return this.http.get<User>(this.baseUrl + 'users/' + id);
+    return this.http.get<User>(this.baseUrl + id);
   }
 
   updateUser(id: string, user: User) {
-    return this.http.put(this.baseUrl + 'users/' + id, user);
+    return this.http.put(this.baseUrl + id, user);
   }
 }

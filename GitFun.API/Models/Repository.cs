@@ -20,6 +20,9 @@ namespace GitFun.API.Models
         [BsonElement("url")]
         public string Url { get; set; }
 
+        [BsonElement("files")]
+        public List<string> Files { get; set; }
+
         [BsonElement("branches")]
         public List<string> Branches { get; set; }
 

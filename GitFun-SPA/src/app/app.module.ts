@@ -13,7 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
-import { RepositoryListComponent } from './repository-list/repository-list.component';
+import { RepositoryListComponent } from './repositories/repository-list/repository-list.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { StarListComponent } from './star-list/star-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
