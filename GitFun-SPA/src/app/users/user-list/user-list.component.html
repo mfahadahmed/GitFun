@@ -1,5 +1,41 @@
 <div class="container">
-  <div *ngFor="let user of users">
-    <app-user-row [user]="user"></app-user-row>
+  <div class="row mt-4">
+    <div class="col">
+      <h2 class="text-center">Users List</h2>
+      <hr>
+    </div>
   </div>
+
+  <div class="row-mt-4">
+    <div class="col">
+      <table class="table">
+      
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Company</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{user.name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.emailAddress}}</td>
+            <td>{{user.phone}}</td>
+            <td>{{user.company}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+  
+  <!-- <div *ngFor="let user of users">
+
+    <app-user-row [user]="user"></app-user-row>
+  </div> -->
 </div>

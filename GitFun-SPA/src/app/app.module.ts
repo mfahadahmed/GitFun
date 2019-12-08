@@ -20,6 +20,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { appRoutes } from './routes';
 import { UserRowComponent } from './users/user-row/user-row.component';
 import { OverviewComponent } from './overview/overview.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -36,7 +37,8 @@ export function tokenGetter() {
       StarListComponent,
       UserListComponent,
       UserRowComponent,
-      OverviewComponent
+      OverviewComponent,
+      EditUserComponent
    ],
    imports: [
       BrowserModule,

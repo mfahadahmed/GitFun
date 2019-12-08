@@ -1,6 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ThrowStmt } from '@angular/compiler';
 import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { NotifierService } from 'angular-notifier';

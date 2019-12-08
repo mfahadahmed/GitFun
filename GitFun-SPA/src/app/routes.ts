@@ -6,7 +6,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { OverviewComponent } from './overview/overview.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },

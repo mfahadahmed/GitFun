@@ -12,11 +12,21 @@ import { Router } from '@angular/router';
 })
 export class OverviewComponent implements OnInit {
   user: User = {};
+  editMode = false;
+
   constructor(private userService: UserService, private authService: AuthService,
     private notifier: NotifierService, private router: Router) { }
 
   ngOnInit() {
     this.getUser();
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+
+  disableEditMode() {
+    this.editMode = false;
   }
 
   getUser() {

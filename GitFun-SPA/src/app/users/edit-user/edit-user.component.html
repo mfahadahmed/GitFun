@@ -1,0 +1,54 @@
+
+<div class="container">
+
+  <form #userEditForm="ngForm" (ngSubmit)="editUser()">
+    <div class="row row-cols-2 mt-2">
+      <div class="col text-center">
+        <label><strong>Name</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="name" [(ngModel)]="user.name">
+      </div>
+
+      <div class="col text-center">
+        <label><strong>Username</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="username" [(ngModel)]="user.username">
+      </div>
+    </div>
+
+    <div class="row row-cols-2 mt-4">
+      <div class="col text-center">
+        <label><strong>Email Address</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="emailAddress" [(ngModel)]="user.emailAddress">
+      </div>
+
+      <div class="col text-center">
+        <label><strong>Phone</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="phone" [(ngModel)]="user.phone">
+      </div>
+    </div>
+
+    <div class="row row-cols-2 mt-4">
+      <div class="col text-center">
+        <label><strong>City</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="city" [(ngModel)]="user.city">
+      </div>
+
+      <div class="col text-center">
+        <label><strong>Country</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="country" [(ngModel)]="user.country">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col text-center">
+        <button class="btn btn-primary" type="submit">Save User</button>
+      </div>
+    </div>
+  </form>
+
+</div>

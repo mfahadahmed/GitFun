@@ -14,7 +14,8 @@
     </div>
 
     <div class="col-md-9">
-      <div class="container">
+
+      <div *ngIf="!editMode" class="container">
 
         <div class="row row-cols-2 mt-2">
           <div class="col text-center">
@@ -60,11 +61,17 @@
 
         <div class="row mt-4">
           <div class="col text-center">
-            <button class="btn btn-primary">Edit User</button>
+            <button class="btn btn-primary" (click)="toggleEditMode()">Edit User</button>
           </div>
         </div>
 
       </div>
+
+      <div *ngIf="editMode">
+        <app-edit-user [user]="user" (disableEdit)="disableEditMode()"></app-edit-user>
+      </div>
+      
     </div>
+
   </div>
 </div>
