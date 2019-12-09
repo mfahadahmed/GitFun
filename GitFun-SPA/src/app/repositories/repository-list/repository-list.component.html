@@ -18,10 +18,12 @@
     <div class="col-md-6">
       <div *ngFor="let repository of repositories" class="card w-100">
         <div class="card-body">
-          <h4 class="card-title"><a href="#">{{repository.name}}</a></h4>
+          <h4 class="card-title"><a [routerLink]="['/repositories', repository.id]">{{repository.name}}</a></h4>
           <p class="card-text">{{repository.description}}</p>
           <p class="card-text">{{repository.isPublic ? 'Public' : 'Private'}}</p>
           <p class="card-text"><small class="text-muted">Last updated on {{repository.lastUpdated}}</small></p>
+          <br>
+          <button class="btn btn-danger" (click)="deleteRepo(repository.id)">Delete</button>
         </div>
       </div>
     </div>

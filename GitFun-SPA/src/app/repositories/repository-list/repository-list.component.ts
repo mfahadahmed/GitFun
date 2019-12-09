@@ -3,7 +3,7 @@ import { RepositoryService } from 'src/app/_services/repository.service';
 import { NotifierService } from 'angular-notifier';
 import { Repository } from 'src/app/_models/repository';
 import { AuthService } from 'src/app/_services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-repository-list',
@@ -22,12 +22,21 @@ export class RepositoryListComponent implements OnInit {
 
   getAllUserRepositories(id: string) {
     this.repoService.getAllRepositoriesByUser(id).subscribe(
-      repoList => this.repositories = repoList,
+      repoList => {
+        this.repositories = repoList;
+      },
       err => this.notifier.notify('error', err.error)
     );
   }
 
   createRepo() {
     this.router.navigate(['/createrepo']);
+  }
+
+  deleteRepo(repoId: string) {
+    this.repoService.deleteRepository(repoId).subscribe(
+      () => this.getAllUserRepositories(this.authService.getUserId()),
+      (err) => this.notifier.notify('error', err.error),
+    );
   }
 }

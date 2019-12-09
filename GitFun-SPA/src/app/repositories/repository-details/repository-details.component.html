@@ -1,3 +1,50 @@
-<p>
-  repository-details works!
-</p>
+<div *ngIf="!editMode" class="container">
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6">
+      <h2 class="text-center">Repository Details</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 text-center">
+      <label><strong>Name</strong></label>
+      <br>
+      <label>{{repository?.name}}</label>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 text-center">
+      <label><strong>Description</strong></label>
+      <br>
+      <label>{{repository?.description}}</label>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 text-center">
+      <label><strong>URL</strong></label>
+      <br>
+      <label>{{repository?.url}}</label>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-6 text-center">
+      <label><strong>Owner</strong></label>
+      <br>
+      <label>{{getOwner()}}</label>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col text-center">
+      <button class="btn btn-primary" (click)="toggleEditMode()">Edit Repository</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="editMode">
+  <app-edit-repository [repository]="repository" (disableEdit)="disableEditMode()"></app-edit-repository>
+</div>

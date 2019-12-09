@@ -13,14 +13,9 @@ export class EditUserComponent implements OnInit {
   @Input() user: User;
   @Output() disableEdit = new EventEmitter();
 
-  constructor(private userService: UserService, private notifier: NotifierService,
-    private router: Router, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private notifier: NotifierService) { }
 
   ngOnInit() {
-    // this.userService.getUser(this.route.params['id']).subscribe(
-    //   (data) => this.user = data,
-    //   (err) => this.notifier.notify('error', err.error)
-    // )
   }
 
   editUser() {

@@ -14,7 +14,6 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { RepositoryListComponent } from './repositories/repository-list/repository-list.component';
-import { ProjectListComponent } from './project-list/project-list.component';
 import { StarListComponent } from './star-list/star-list.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { appRoutes } from './routes';
@@ -24,6 +23,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
 import { RepositoryDetailsComponent } from './repositories/repository-details/repository-details.component';
 import { EditRepositoryComponent } from './repositories/edit-repository/edit-repository.component';
+import { ProjectsListComponent } from './projects/projects-list/projects-list.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -36,7 +36,7 @@ export function tokenGetter() {
       HomeComponent,
       RegisterComponent,
       RepositoryListComponent,
-      ProjectListComponent,
+      ProjectsListComponent,
       StarListComponent,
       UserListComponent,
       UserRowComponent,

@@ -7,16 +7,13 @@
         <a class="nav-link" [routerLink]="['/overview']">Profile</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/users']">Users</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/repositories']">Repositories</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/projects']">Projects</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/stars']">Stars</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/users']">Users</a>
       </li>
     </ul>
   
@@ -27,7 +24,7 @@
           <a class="dropdown-item" [routerLink]="['/overview']">Profile</a>
           <a class="dropdown-item" [routerLink]="['/repositories']">Repositories</a>
           <a class="dropdown-item" [routerLink]="['/projects']">Projects</a>
-          <a class="dropdown-item" [routerLink]="['/stars']">Stars</a>
+          <a class="dropdown-item" [routerLink]="['/users']">Users</a>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>
       </div>

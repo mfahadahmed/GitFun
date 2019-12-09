@@ -1,3 +1,49 @@
-<p>
-  edit-repository works!
-</p>
+<div class="container">
+
+  <form #repoEditForm="ngForm" (ngSubmit)="editRepository()">
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4">
+        <h2 class="text-center">Edit Repository</h2>
+        <hr>
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <label><strong>Name</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="name" [(ngModel)]="repository.name">
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <label><strong>Description</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="description" [(ngModel)]="repository.description">
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <label><strong>URL</strong></label>
+        <br>
+        <input type="text" class="form-control" required name="url" [(ngModel)]="repository.url">
+      </div>
+    </div>
+
+    <div class="row mt-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <label><strong>Owner</strong></label>
+        <br>
+        <input type="text" disabled class="form-control" required name="owner" placeholder="{{getOwner()}}">
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col text-center">
+        <button class="btn btn-primary" type="submit">Save Repository</button>
+      </div>
+    </div>
+  </form>
+</div>
