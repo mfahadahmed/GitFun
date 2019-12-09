@@ -10,6 +10,7 @@ namespace GitFun.API.Repositories
     {
         Task<List<Repository>> GetList();
         Task<List<Repository>> GetList(List<string> repoIds);
+        Task<List<Repository>> GetList(string userId);
         Task<Repository> GetById(string id);
         Task Create(Repository repository);
         Task Update(string id, Repository repository);

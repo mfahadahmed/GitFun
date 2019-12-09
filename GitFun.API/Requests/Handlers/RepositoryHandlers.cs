@@ -99,6 +99,28 @@ namespace GitFun.API.Requests.Handlers
         }
     }
 
+    public class GetAllReposByUserQueryHandler : IRequestHandler<GetAllReposByUserQuery, List<RepoListDTO>>
+    {
+        private readonly IMapper _mapper;
+        private readonly IRepoRepository _repoRepository;
+
+        public GetAllReposByUserQueryHandler(IRepoRepository repoRepository, IMapper mapper)
+        {
+            _repoRepository = repoRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<List<RepoListDTO>> Handle(GetAllReposByUserQuery request, CancellationToken cancellationToken)
+        {
+            var reposList = await _repoRepository.GetList(request.UserId);
+            if (reposList == null)
+                throw new Exception("No repository found. Failed to get list.");
+
+            var repoDTOList = _mapper.Map<List<Repository>, List<RepoListDTO>>(reposList);
+            return repoDTOList;
+        }
+    }
+
     public class GetRepoDetailsQueryHandler : IRequestHandler<GetRepoDetailsQuery, RepoDetailsDTO>
     {
         private readonly IMapper _mapper;

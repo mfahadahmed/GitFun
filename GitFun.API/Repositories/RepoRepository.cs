@@ -35,6 +35,15 @@ namespace GitFun.API.Repositories
             return await repos?.ToListAsync();
         }
 
+        public async Task<List<Repository>> GetList(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+                return null;
+
+            var repos = await _repositories.FindAsync(repo => repo.Owner == userId);
+            return await repos?.ToListAsync();
+        }
+
         public async Task<Repository> GetById(string id)
         {
             var repository = await _repositories.FindAsync(repository => repository.Id == id);

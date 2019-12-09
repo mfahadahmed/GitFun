@@ -38,6 +38,20 @@ namespace GitFun.API.Controllers
             }
         }
 
+        [HttpGet("getAllRepositoriesByUser/{userId}")]
+        public async Task<IActionResult> GetAllRepositoriesByUser(string userId)
+        {
+            try
+            {
+                var reposList = await _mediator.Send(new GetAllReposByUserQuery { UserId = userId });
+                return Ok(reposList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         [HttpGet("{id}", Name = "GetRepository")]
         public async Task<IActionResult> Get(string id)
         {

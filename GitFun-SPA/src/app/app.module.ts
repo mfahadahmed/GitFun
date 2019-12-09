@@ -21,6 +21,9 @@ import { appRoutes } from './routes';
 import { UserRowComponent } from './users/user-row/user-row.component';
 import { OverviewComponent } from './overview/overview.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
+import { RepositoryDetailsComponent } from './repositories/repository-details/repository-details.component';
+import { EditRepositoryComponent } from './repositories/edit-repository/edit-repository.component';
 
 export function tokenGetter() {
    return localStorage.getItem('token');
@@ -38,7 +41,10 @@ export function tokenGetter() {
       UserListComponent,
       UserRowComponent,
       OverviewComponent,
-      EditUserComponent
+      EditUserComponent,
+      CreateRepositoryComponent,
+      RepositoryDetailsComponent,
+      EditRepositoryComponent,
    ],
    imports: [
       BrowserModule,

@@ -12,6 +12,11 @@ namespace GitFun.API.Requests.Queries
         public List<string> Ids { get; set; }
     }
 
+    public class GetAllReposByUserQuery : IRequest<List<RepoListDTO>>
+    {
+        public string UserId { get; set; }
+    }
+
     public class GetRepoDetailsQuery : IRequest<RepoDetailsDTO>
     {
         public string Id { get; set; }

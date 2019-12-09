@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { OverviewComponent } from './overview/overview.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ export const appRoutes: Routes = [
             { path: 'stars', component: StarListComponent },
             { path: 'users', component: UserListComponent },
             { path: 'edituser', component: EditUserComponent },
+            { path: 'createrepo', component: CreateRepositoryComponent },
         ]
     },
     { path: '**', redirectTo: '', pathMatch: 'full'},

@@ -13,11 +13,11 @@ export class RepositoryService {
   constructor(private http: HttpClient) { }
 
   createRepository(repository: Repository) {
-    this.http.post(this.baseUrl, repository);
+    return this.http.post(this.baseUrl, repository);
   }
 
   updateRepository(id: string, repository: Repository) {
-    this.http.put(this.baseUrl + id, repository);
+    return this.http.put(this.baseUrl + id, repository);
   }
 
   deleteRepository(id: string) {
@@ -29,7 +29,7 @@ export class RepositoryService {
   }
 
   getAllRepositoriesByUser(id: string): Observable<Repository[]> {
-    return this.http.get<Repository[]>(this.baseUrl + id);
+    return this.http.get<Repository[]>(this.baseUrl + 'getAllRepositoriesByUser/' + id);
   }
 
   getRepositoryDetails(id: string): Observable<Repository> {

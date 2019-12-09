@@ -54,7 +54,14 @@ namespace GitFun.API.Repositories
             await _users.InsertOneAsync(user);
         }
 
-        public async Task Update(string id, User user) => await _users.ReplaceOneAsync(us => us.Id == id, user);
+        public async Task Update(string id, User user)
+        {
+            var existingUser = await GetById(id);
+            user.PasswordHash = existingUser.PasswordHash;
+            user.PasswordSalt = existingUser.PasswordSalt;
+
+            await _users.ReplaceOneAsync(us => us.Id == id, user);
+        }
 
         public async Task Remove(string id) => await _users.DeleteOneAsync(user => user.Id == id);
     }

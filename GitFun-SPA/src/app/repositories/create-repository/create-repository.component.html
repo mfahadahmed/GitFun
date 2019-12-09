@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-4">
+      <h3 class="text-center">Create Repository</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-4">
+      <form #createRepoForm="ngForm" (ngSubmit)="createRepository()">
+      
+        <div class="form-group">
+          <input type="text" class="form-control" required name="name" placeholder="Name"
+            [(ngModel)]="model.name">
+        </div>
+      
+        <div class="form-group">
+          <input type="text" class="form-control" required name="description" placeholder="Description"
+            [(ngModel)]="model.description">
+        </div>
+      
+        <div class="form-group">
+          <input type="text" class="form-control" required name="url" placeholder="URL"
+          [(ngModel)]="model.url">
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" disabled name="owner" placeholder="{{getOwner()}}">
+        </div>
+      
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="publicAccess"
+          [(ngModel)]="model.isPublic">
+          <label class="form-check-label" for="publicAccess">Public</label>
+        </div>
+
+        <div class="formgroup text-center">
+          <button class="btn btn-primary mr-2" type="submit">Create</button>
+          <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
+        </div>
+      
+      </form>
+    </div>
+  </div>
+</div>
